@@ -7,7 +7,7 @@ export default async function handler(req, res) {
 		contents: [
 		{
 			role: "user",
-			parts: [{ text: prompt }],
+			parts: [{ text: decodeURIComponent(prompt) }],
 		},
 		],
 	};
