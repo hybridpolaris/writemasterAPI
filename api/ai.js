@@ -1,4 +1,5 @@
-export default async function handler(prompt = "") {
+export default async function handler(req, res) {
+	const {prompt} = req.query;
 	const apiKey = process.env.GOOGLE_API_KEY;
 	const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 	
@@ -19,5 +20,5 @@ export default async function handler(prompt = "") {
 		body: JSON.stringify(requestBody),
 	});
 	
-	return response;
+	res.status(200).json(await response.json());
 }
