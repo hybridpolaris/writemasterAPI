@@ -2,7 +2,8 @@ export default async function handler(req, res) {
 	res.setHeader("Access-Control-Allow-Origin", "*");
 	res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
 	res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  
+
+	const {prompt} = req.query;
 	if (req.method == "OPTIONS" || !prompt) {
 	  return res.status(200).end();
 	}
@@ -12,7 +13,6 @@ export default async function handler(req, res) {
     	return res.status(204).end();
   	}
 
-	const {prompt} = req.query;
 	const apiKey = process.env.GOOGLE_API_KEY;
 	const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 	
