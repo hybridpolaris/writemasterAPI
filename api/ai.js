@@ -20,10 +20,7 @@ export default async function handler(req, res) {
 		contents: [{
 			role: "user",
 			parts: [{ text: decodeURIComponent(prompt) }],
-		}],
-		generationConfig: {
-			responseModalities: ['Image', 'Text'],
-		}
+		}]
 	};
 	
 	const response = await fetch(url, {
